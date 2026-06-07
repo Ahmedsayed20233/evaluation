@@ -81,7 +81,7 @@
             background: var(--glass-bg);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            padding: 60px 50px;
+            padding: 40px 50px 60px 50px; /* NEW: Reduced top padding, kept other padding for balance */
             border-radius: var(--radius-lg);
             border: 1px solid var(--glass-border);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
@@ -101,24 +101,26 @@
 
         /* --- Header Section --- */
         .uni-logo {
-    max-width: 140px; /* كبرنا الحجم شوية عشان اللوجو يظهر بتفاصيله */
-    margin-bottom: 30px;
-    /* لغينا فلتر الأبيض عشان ألوان الجامعة تظهر، وسبنا الـ Glow */
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
-    transition: var(--transition);
-}
+            max-width: 140px; /* كبرنا الحجم شوية عشان اللوجو يظهر بتفاصيله */
+            /* margin-bottom: 30px; */
+            /* NEW: Center the logo and add margins for spacing below photo */
+            display: block;
+            margin: 0 auto 30px auto; 
+            /* لغينا فلتر الأبيض عشان ألوان الجامعة تظهر، وسبنا الـ Glow */
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+            transition: var(--transition);
+        }
 
-.uni-logo:hover { 
-    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6)); 
-    transform: scale(1.05); 
-}
-        .profile-header {
+        .uni-logo:hover { 
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6)); 
+            transform: scale(1.05); 
+        }
+
+        /* NEW: Centered Section for the prominent photo */
+        .top-photo-section {
             display: flex;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--glass-border);
+            justify-content: center;
+            margin-bottom: 30px;
         }
 
         .profile-img-wrapper {
@@ -136,11 +138,22 @@
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
         .profile-img {
-            width: 110px;
-            height: 110px;
+            /* NEW: Significant size increase */
+            width: 160px; 
+            height: 160px; 
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--bg-dark);
+        }
+
+        /* NEW: Header is now centered block instead of side-by-side flex */
+        .profile-header {
+            /* display: flex; align-items: center; gap: 30px; */
+            display: block;
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--glass-border);
         }
 
         .profile-info h1 {
@@ -376,7 +389,8 @@
         /* --- Responsive --- */
         @media (max-width: 768px) {
             .survey-container { padding: 40px 20px; }
-            .profile-header { flex-direction: column; text-align: center; }
+            /* NEW: Profile Header text remains center-aligned on mobile */
+            /* .profile-header { flex-direction: column; text-align: center; } */
             .segmented-control { flex-direction: column; border-radius: 12px; }
             .segmented-control label { border-right: none; border-bottom: 1px solid var(--glass-border); padding: 20px; flex-direction: row; justify-content: space-between; }
             .segmented-control label:last-child { border-bottom: none; }
@@ -402,11 +416,19 @@
     </div>
 
     <div id="surveyMain">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj5HNprxYZOhUuOJG7GZE7zXzWcRWEy4kwCA&s" alt="University Logo" class="uni-logo">
-
-        <div class="profile-header">
+        
+        <!-- NEW: Large, Centered Photo Section is now the first visual element -->
+        <div class="top-photo-section">
             <div class="profile-img-wrapper">
                 <img src="my-photo.jpg" alt="Ahmed Sayed" class="profile-img">
+            </div>
+        </div>
+
+        <!-- NEW: Logo is centered below the photo -->
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj5HNprxYZOhUuOJG7GZE7zXzWcRWEy4kwCA&s" alt="University Logo" class="uni-logo">
+
+        <!-- NEW: Header text is centered below the logo -->
+        <div class="profile-header">
             <div class="profile-info">
                 <h1>Ahmed Sayed</h1>
                 <h2>Teaching Assistant • Electrical Power</h2>
